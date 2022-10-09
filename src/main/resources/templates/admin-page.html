@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -23,6 +23,7 @@
                 <td>Номер пропуска</td>
                 <td>Имя</td>
                 <td>Фамилия</td>
+                <td>Уровень доступа</td>
                 <td>Комната</td>
             </tr>
             </thead>
@@ -31,6 +32,9 @@
                 <td th:text="${u.passNumber}"></td>
                 <td th:text="${u.name}"></td>
                 <td th:text="${u.surname}"></td>
+                <td th:if="${u.roles[0].getName().equals('ROLE_ADMIN')}">Администратор</td>
+                <td th:if="${u.roles[0].getName().equals('ROLE_MANAGER')}">Староста</td>
+                <td th:if="${u.roles[0].getName().equals('ROLE_USER')}">Пользователь</td>
                 <td th:text="${u.room}"></td>
                 <td>
                     <a class="btn btn-danger" th:href="@{'user/remove/' + ${u.passNumber}}">Отстранить</a>

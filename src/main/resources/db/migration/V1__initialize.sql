@@ -1,8 +1,18 @@
+create table roles (
+                       id                    serial,
+                       name                  varchar(50) not null,
+                       primary key (id)
+);
+insert into roles (name)
+values
+    ('ROLE_USER'), ('ROLE_ADMIN'), ('ROLE_MANAGER');
+
+
 create table users (
                        pass_number               varchar(10) not null,
                        name              varchar(30) not null,
                        surname              varchar(30) not null,
-                       password              varchar(80) not null,
+                       password              varchar(80),
                        room                 varchar(50),
                        primary key (pass_number)
 );
