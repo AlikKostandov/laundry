@@ -1,14 +1,32 @@
 package com.students.laundry.controllers;
 
+import com.students.laundry.services.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/manager")
 public class ManagerController {
-    @GetMapping
-    public String showManagerPage() {
+
+    UserService userService;
+
+    public ManagerController(UserService userService) {
+        this.userService = userService;
+    }
+    @GetMapping("/manager")
+    public String showManagerPage(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
         return "manager-page";
+    }
+
+    @PostMapping("user/add")
+    public String addNewUser(@RequestParam String passNumber,
+                                @RequestParam String name,
+                                @RequestParam String surname,
+                                @RequestParam String room) {
+        userService.saveOrUpdate(passNumber, name, surname, room);
+        return "redirect:/manager";
     }
 }

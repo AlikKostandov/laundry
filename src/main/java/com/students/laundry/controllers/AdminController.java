@@ -24,7 +24,7 @@ public class AdminController {
 
 
     @GetMapping("/user/remove/{passNumber}")
-    public String removeBoxById(@PathVariable String passNumber) {
+    public String removeUserByPassNumber(@PathVariable String passNumber) {
         userService.deleteByPassNumber(passNumber);
         return "redirect:/admin";
     }

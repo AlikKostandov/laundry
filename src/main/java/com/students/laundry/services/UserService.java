@@ -44,10 +44,18 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public User saveOrUpdate(User user) {
-        return userRepository.save(user);
+    @Transactional
+    public void saveOrUpdate(String passNumber, String name, String surname, String room) {
+        User user = new User();
+        user.setPassNumber(passNumber);
+        user.setName(name);
+        user.setSurname(surname);
+        user.setPassword(null);
+        user.setRoom(room);
+        userRepository.save(user);
     }
 
+    @Transactional
     public void deleteByPassNumber(String passNumber) {
         userRepository.deleteByPassNumber(passNumber);
     }
