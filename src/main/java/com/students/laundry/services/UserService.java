@@ -2,6 +2,7 @@ package com.students.laundry.services;
 
 import com.students.laundry.entities.Role;
 import com.students.laundry.entities.User;
+import com.students.laundry.repositories.RoleRepository;
 import com.students.laundry.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -22,10 +24,15 @@ import java.util.stream.Collectors;
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
 
     public Optional<User> findByPassNumber(String passNumber) {
         return userRepository.findByPassNumber(passNumber);
+    }
+
+    public Optional<Role> findByName(String name) {
+        return roleRepository.findByName(name);
     }
 
     @Override
@@ -52,6 +59,10 @@ public class UserService implements UserDetailsService {
         user.setSurname(surname);
         user.setPassword(null);
         user.setRoom(room);
+        Role role = findByName("ROLE_USER").get();
+        Collection<Role> roles = new ArrayList<>();
+        roles.add(role);
+        user.setRoles(roles);
         userRepository.save(user);
     }
 
