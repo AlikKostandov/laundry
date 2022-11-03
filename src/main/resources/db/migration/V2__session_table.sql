@@ -1,10 +1,11 @@
-drop table if exists sessions;
+drop table if exists sessions cascade;
 create table sessions (
                        id                    serial,
                        session_start_time                  varchar(5) not null,
                        status               boolean         default false,
                        primary key (id)
 );
+
 
 insert into sessions (session_start_time)
 values
@@ -16,10 +17,9 @@ values
     ('18:00'),
     ('20:00'),
     ('22:00'),
-    ('00:00'),
-    ('02:00');
+    ('00:00');
 
-
+drop table if exists user_session cascade;
 create table user_session (
                               user_pass_number      varchar(10) not null,
                               session_id               int not null,

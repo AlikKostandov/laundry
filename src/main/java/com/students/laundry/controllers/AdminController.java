@@ -23,7 +23,7 @@ public class AdminController {
     }
 
 
-    @GetMapping("/user/remove/{passNumber}")
+    @GetMapping("/admin/remove/{passNumber}")
     public String removeUserByPassNumber(@PathVariable String passNumber) {
         userService.deleteByPassNumber(passNumber);
         return "redirect:/admin";

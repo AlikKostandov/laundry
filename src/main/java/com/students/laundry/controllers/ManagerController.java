@@ -4,6 +4,7 @@ import com.students.laundry.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,6 +28,12 @@ public class ManagerController {
                                 @RequestParam String surname,
                                 @RequestParam String room) {
         userService.saveOrUpdate(passNumber, name, surname, room);
+        return "redirect:/manager";
+    }
+
+    @GetMapping("/manager/remove/{passNumber}")
+    public String removeUserByPassNumber(@PathVariable String passNumber) {
+        userService.deleteByPassNumber(passNumber);
         return "redirect:/manager";
     }
 }
