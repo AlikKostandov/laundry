@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 
@@ -22,10 +24,20 @@ public class AdminController {
         return "admin-page";
     }
 
+    @GetMapping("/admin/edit/{passNumber}")
+    public String showEditUserForm(@PathVariable String passNumber, Model model) {
+        model.addAttribute("user", userService.findByPassNumber(passNumber));
+        return "user-edit-page";
+    }
 
-    @GetMapping("/admin/remove/{passNumber}")
-    public String removeUserByPassNumber(@PathVariable String passNumber) {
-        userService.deleteByPassNumber(passNumber);
+    @PostMapping("/admin/edit")
+    public String editUser(@RequestParam String passNumber,
+                           @RequestParam String name,
+                           @RequestParam String surname,
+                           @RequestParam String room,
+                           @RequestParam String roleCode) {
+        userService.changeUserRole(passNumber, name, surname, room, roleCode);
         return "redirect:/admin";
     }
+
 }

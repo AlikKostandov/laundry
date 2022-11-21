@@ -17,7 +17,7 @@
         <h1>Администрационная панель</h1>
         <br/>
         <h4>Жители этажа:</h4>
-        <table class="table table-striped">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <td>Номер пропуска</td>
@@ -37,7 +37,7 @@
                 <td th:if="${u.roles[0].getName().equals('ROLE_USER')}">Пользователь</td>
                 <td th:text="${u.room}"></td>
                 <td>
-                    <a class="btn btn-danger" th:href="@{'admin/remove/' + ${u.passNumber}}">Отстранить</a>
+                    <a class="btn btn-secondary" th:href="@{'admin/edit/' + ${u.passNumber}}">Изменить уровень доступа</a>
                 </td>
             </tr>
             </tbody>

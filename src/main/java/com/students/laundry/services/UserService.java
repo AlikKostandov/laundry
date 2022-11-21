@@ -26,6 +26,8 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
+//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     public Optional<User> findByPassNumber(String passNumber) {
         return userRepository.findByPassNumber(passNumber);
@@ -66,9 +68,45 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
+
+    public void changeUserRole(String passNumber, String name, String surname, String room, String roleName) {
+        User userFromDB = userRepository.findByPassNumber(passNumber).orElseThrow();
+        userFromDB.setName(name);
+        userFromDB.setSurname(surname);
+        userFromDB.setRoom(room);
+        if(roleName != null) {
+            switch (roleName) {
+                case ("2"):
+                    roleName = "ROLE_ADMIN";
+                    break;
+                case ("3"):
+                    roleName = "ROLE_MANAGER";
+                    break;
+                default:
+                    roleName = "ROLE_USER";
+                    break;
+            }
+
+            Role role = findByName(roleName).get();
+            Collection<Role> roles = new ArrayList<>();
+            roles.add(role);
+            userFromDB.setRoles(roles);
+        }
+        userRepository.save(userFromDB);
+    }
+
+
     @Transactional
     public void deleteByPassNumber(String passNumber) {
         userRepository.deleteByPassNumber(passNumber);
+    }
+
+    @Transactional
+    public void savePasswordForUser(String passNumber, String password) throws UsernameNotFoundException {
+        User userFromDB = userRepository.findByPassNumber(passNumber).orElseThrow(() -> new UsernameNotFoundException(String.format("User '%s' not found", passNumber)));
+
+//        userFromDB.setPassword(bCryptPasswordEncoder.encode(password));
+        userRepository.save(userFromDB);
     }
 
 }

@@ -17,7 +17,7 @@
         <h1>Панель старосты</h1>
         <br/>
         <h4>Жители этажа:</h4>
-        <table class="table table-striped">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <td>Номер пропуска</td>
@@ -33,7 +33,8 @@
                 <td th:text="${u.surname}"></td>
                 <td th:text="${u.room}"></td>
                 <td>
-                    <a class="btn btn-danger" th:href="@{'manager/remove/' + ${u.passNumber}}">Отстранить</a>
+                    <a th:if="${u.roles[0].getName().equals('ROLE_USER')}" class="btn btn-danger" th:href="@{'manager/remove/' + ${u.passNumber}}">Отстранить</a>
+                    <a th:if="${u.roles[0].getName().equals('ROLE_USER')}" class="btn btn-secondary" th:href="@{'manager/edit/' + ${u.passNumber}}">Редактировать</a>
                 </td>
             </tr>
             </tbody>

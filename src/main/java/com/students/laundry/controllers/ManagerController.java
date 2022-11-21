@@ -36,4 +36,20 @@ public class ManagerController {
         userService.deleteByPassNumber(passNumber);
         return "redirect:/manager";
     }
+
+    @GetMapping("/manager/edit/{passNumber}")
+    public String showEditUserForm(@PathVariable String passNumber, Model model) {
+        model.addAttribute("user", userService.findByPassNumber(passNumber));
+        return "user-edit-page";
+    }
+
+    @PostMapping("/manager/edit")
+    public String editUser(@RequestParam String passNumber,
+                           @RequestParam String name,
+                           @RequestParam String surname,
+                           @RequestParam String room,
+                           @RequestParam String roleCode) {
+        userService.changeUserRole(passNumber, name, surname, room, null);
+        return "redirect:/manager";
+    }
 }

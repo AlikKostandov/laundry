@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Edit Page</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Панель редактирования</h1>
+
+    <h4>Редактировать данные о студенте:</h4>
+    <form th:action="@{'/admin/edit'}" th:object="${user}" method="post" sec:authorize="hasAnyRole('ADMIN')">
+        <input th:field="*{passNumber}" name="passNumber" hidden class="form-control form-control-sm">
+        <div class="form-group">
+            <label>Имя</label>
+            <input th:field="*{name}" name="name" class="form-control form-control-sm" readonly>
+        </div>
+        <div class="form-group">
+            <label>Фамилия</label>
+            <input th:field="*{surname}" name="surname" class="form-control form-control-sm" readonly>
+        </div>
+        <div class="form-group">
+            <label>Комната</label>
+            <input th:field="*{room}" name="room" class="form-control form-control-sm" readonly>
+        </div>
+        <div class="form-group">
+            <label for="ty">Уровень доступа</label>
+            <select name="roleCode" id="ty" required aria-label=".form-select-sm example">
+                <option selected disabled value=" ">Choose</option>
+                <option value="1">Пользователь</option>
+                <option value="3">Староста</option>
+                <option value="2">Администратор</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+    <form th:action="@{'/manager/edit'}" th:object="${user}" method="post" sec:authorize="hasAnyRole('MANAGER')">
+        <input th:field="*{passNumber}" name="passNumber" hidden class="form-control form-control-sm">
+        <div class="form-group">
+            <label>Имя</label>
+            <input th:field="*{name}" name="name" class="form-control form-control-sm">
+        </div>
+        <div class="form-group">
+            <label>Фамилия</label>
+            <input th:field="*{surname}" name="surname" class="form-control form-control-sm">
+        </div>
+        <div class="form-group">
+            <label>Комната</label>
+            <input th:field="*{room}" name="room" class="form-control form-control-sm">
+        </div>
+        <input  name="roleCode" hidden class="form-control form-control-sm" value="">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+
+
+</body>
+</html>
