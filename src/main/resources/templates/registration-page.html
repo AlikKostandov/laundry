@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/auth-style.css">
+  <title>Laundry</title>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="cont">
+        <div class="header">
+          <div class="header-logo">
+            <h2><span class="color-blue">Laundry</span></h2>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+  
+  
+    <div class="reg">
+      <div class="cont">
+        <div class="reg-cont">
+          <div class="reg-header">
+            <h1>Регистрация</h1>
+          </div>
+          <div class="reg-body">
+            <form th:action="@{/registry}" th:object="${user}" method="post" class="reg-form">
+              <input class="reg-input" type="text" th:field="*{passNumber}" placeholder="Введите № пропуска" />
+              <input class="reg-input" type="password" th:field="*{password}" placeholder="Введите пароль" />
+              <input class="reg-button" type="submit"  value="Зарегистрироваться" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      
+      
+  </div>
+</body>
+</html>

@@ -22,16 +22,35 @@
 <div class="container content">
     <div class="row">
         <div class="col-md-4">
-            <div class="list-group">
-                <a class="list-group-item category">16</a>
-                <a class="list-group-item category">15</a>
-                <a class="list-group-item category">14</a>
-                <a class="list-group-item category">13</a>
-                <a class="list-group-item category">12</a>
-                <a class="list-group-item category">11</a>
-                <a class="list-group-item category">10</a>
-                <a class="list-group-item category">9</a>
-            </div>
+            <h2>Фильтры:</h2>
+            <form th:action="@{'/home'}" method="get">
+<!--                <select class="floors" required size="8" id="floors" name="floor" aria-label=".form-select-sm example">-->
+<!--                    <option class="list-group-item category" value="16">16 этаж</option>-->
+<!--                    <option class="list-group-item category" value="15">15 этаж</option>-->
+<!--                    <option class="list-group-item category" value="14">14 этаж</option>-->
+<!--                    <option class="list-group-item category" value="13">13 этаж</option>-->
+<!--                    <option class="list-group-item category" value="12">12 этаж</option>-->
+<!--                    <option class="list-group-item category" value="11">11 этаж</option>-->
+<!--                    <option class="list-group-item category" value="10">10 этаж</option>-->
+<!--                    <option class="list-group-item category" value="9">9 этаж</option>-->
+<!--                </select>-->
+
+                <a href="/home" class="list-group-item category">Все</a>
+                <a href="/home?floor=16" class="list-group-item category">16 этаж</a>
+                <a href="/home?floor=15" class="list-group-item category">15 этаж</a>
+                <a href="/home?floor=14" class="list-group-item category">14 этаж</a>
+                <a href="/home?floor=13" class="list-group-item category">13 этаж</a>
+                <a href="/home?floor=12" class="list-group-item category">12 этаж</a>
+                <a href="/home?floor=11" class="list-group-item category">11 этаж</a>
+                <a href="/home?floor=10" class="list-group-item category">10 этаж</a>
+                <a href="/home?floor=9" class="list-group-item category">9 этаж</a>
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="status" name="status" value="false">
+                    <label class="form-check-label" for="status">Только свободные</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Применить</button>
+            </form>
         </div>
         <div class="col-md-8 products">
             <div class="row">

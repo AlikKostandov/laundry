@@ -22,12 +22,12 @@ public class ManagerController {
         return "manager-page";
     }
 
-    @PostMapping("user/add")
+    @PostMapping("manager/user/add")
     public String addNewUser(@RequestParam String passNumber,
                                 @RequestParam String name,
                                 @RequestParam String surname,
                                 @RequestParam String room) {
-        userService.saveOrUpdate(passNumber, name, surname, room);
+        userService.saveOrUpdate(passNumber, name, surname, room, false);
         return "redirect:/manager";
     }
 

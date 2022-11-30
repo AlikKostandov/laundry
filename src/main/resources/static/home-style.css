@@ -74,3 +74,8 @@
     font-weight: bold;
     color: black;
 }
+
+.floors {
+    overflow: hidden;
+    width: 350px
+}

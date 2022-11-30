@@ -3,21 +3,22 @@ create table sessions (
                        id                    serial,
                        session_start_time                  varchar(5) not null,
                        status               boolean         default false,
+                       floor                int not null,
                        primary key (id)
 );
 
 
-insert into sessions (session_start_time)
+insert into sessions (session_start_time, floor)
 values
-    ('08:00'),
-    ('10:00'),
-    ('12:00'),
-    ('14:00'),
-    ('16:00'),
-    ('18:00'),
-    ('20:00'),
-    ('22:00'),
-    ('00:00');
+    ('08:00', 15),
+    ('10:00', 15),
+    ('12:00', 15),
+    ('14:00', 15),
+    ('16:00', 15),
+    ('18:00', 15),
+    ('20:00', 15),
+    ('22:00', 15),
+    ('00:00', 15);
 
 drop table if exists user_session cascade;
 create table user_session (

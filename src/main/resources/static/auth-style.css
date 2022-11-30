@@ -1,0 +1,303 @@
+@import 'fancybox.css';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  color: #111;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+h2 {
+  color: #111;
+  font-size: 18px;
+}
+
+.site {
+  background-color: #FDFEFE;
+}
+
+.cont {
+  width: 90%;
+  margin: auto;
+}
+
+header {
+  top: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.header {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.reg {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #F9F9F9;
+  padding: 20px 10px;
+}
+
+.reg-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reg-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.reg-header {
+  margin-bottom: 20px;
+}
+
+.reg-input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  /* border: 1px solid red; */
+  border: none;
+  background-color: #F9F9F9;
+  outline: none;
+  border-bottom: 1px solid #000;
+  cursor: pointer;
+}
+
+.reg-input:focus {
+  outline: none;
+}
+
+.reg-button {
+  padding: 10px;
+  border: 1px solid #5DADE2;
+  background-color: #5DADE2;
+  transition: .3s;
+  border-radius: 5px;
+  color: #FDFEFE;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reg-button:hover {
+  transition: .3s;
+  border: 1px solid #3498DB;
+  background-color: #3498DB;
+}
+
+.color-blue {
+  color: #5DADE2;
+  transition: .3s;
+}
+
+.color-blue:hover {
+  color: #3498DB;
+  transition: .3s;
+}
+
+.auth-help {
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 25px;
+}
+
+.tt-item {
+  padding: 10px 15px;
+  display: inline-block;
+  border-radius: 20px;
+  border: 1px solid #000;
+  transition: .3s;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.tt-item:hover {
+  transition: .3s;
+  border: 1px solid #3498DB;
+}
+
+.tt-item:hover h2 {
+  transition: .3s;
+  color: #3498DB;
+}
+
+.tt-item h2 {
+  cursor: pointer;
+  transition: .3s;
+}
+
+.tt-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #000;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px;
+  padding-bottom: 0;
+}
+
+.footer-item {
+  margin-bottom: 10px;
+  color: #000;
+  border-bottom: 1px solid #000;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.footer-item:hover {
+  transition: .3s;
+  color: #3498DB;
+  border-bottom: 1px solid #3498DB;
+}
+
+.tt-confirm {
+  display: none;
+}
+
+.edit-form {
+  align-items: flex-start;
+}
+
+.tt-congfirm-cont {
+  background-color: #fff;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.tt-confirm-btn {
+  display: inline-block;
+  padding: 10px;
+  color: #FFF;
+  background-color: #52BE80;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-weight: bold;
+  transition: .3s;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.tt-confirm-btn:hover {
+  transition: .3s;
+  background-color: #27AE60;
+}
+
+.btn-cancel {
+  background-color: #EC7063;
+}
+
+.btn-cancel:hover {
+  background-color: #E74C3C;
+  transition: .3s;
+}
+
+.footer-item-active {
+  color: #3498DB;
+  border-bottom: 1px solid #3498DB;
+}
+
+
+table .tt-confirm-btn {
+  margin: 0;
+}
+
+.admin-btn:first-child {
+  margin-right: 10px;
+}
+
+table {
+  text-align: center;
+  width: 100%;
+	border-collapse: collapse;
+}
+
+table th {
+	padding: 10px 50px;
+	background: #efefef;
+}
+table td {
+	border-bottom: 1px solid #dddddd;
+	padding: 5px 50px;
+}
+
+.edit-user form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.edit-user-input {
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.edit-user-select {
+  display: flex;
+  margin-left: 20px;
+}
+
+.form-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+
+}
+
+.edit-user-select-menu {
+  display: flex;
+}
+
+@media (min-width: 400px) {
+  .reg-input {
+    width: 60%;
+  }
+}

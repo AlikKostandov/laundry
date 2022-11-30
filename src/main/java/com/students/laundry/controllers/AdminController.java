@@ -40,4 +40,13 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @PostMapping("admin/user/add")
+    public String addNewUser(@RequestParam String passNumber,
+                             @RequestParam String name,
+                             @RequestParam String surname,
+                             @RequestParam String room) {
+        userService.saveOrUpdate(passNumber, name, surname, room, true);
+        return "redirect:/admin";
+    }
+
 }

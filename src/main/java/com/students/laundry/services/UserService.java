@@ -5,11 +5,13 @@ import com.students.laundry.entities.User;
 import com.students.laundry.repositories.RoleRepository;
 import com.students.laundry.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +28,10 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
-//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Bean
+    public BCryptPasswordEncoder passwordEncoderVer() {
+        return new BCryptPasswordEncoder();
+    }
 
 
     public Optional<User> findByPassNumber(String passNumber) {
@@ -54,14 +59,20 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public void saveOrUpdate(String passNumber, String name, String surname, String room) {
+    public void saveOrUpdate(String passNumber, String name, String surname, String room, boolean isAdmin) {
         User user = new User();
         user.setPassNumber(passNumber);
         user.setName(name);
         user.setSurname(surname);
         user.setPassword(null);
         user.setRoom(room);
-        Role role = findByName("ROLE_USER").get();
+        Role role;
+
+        if(!isAdmin)
+            role = findByName("ROLE_USER").get();
+        else
+            role = findByName("ROLE_MANAGER").get();
+
         Collection<Role> roles = new ArrayList<>();
         roles.add(role);
         user.setRoles(roles);
@@ -105,7 +116,7 @@ public class UserService implements UserDetailsService {
     public void savePasswordForUser(String passNumber, String password) throws UsernameNotFoundException {
         User userFromDB = userRepository.findByPassNumber(passNumber).orElseThrow(() -> new UsernameNotFoundException(String.format("User '%s' not found", passNumber)));
 
-//        userFromDB.setPassword(bCryptPasswordEncoder.encode(password));
+        userFromDB.setPassword(passwordEncoderVer().encode(password));
         userRepository.save(userFromDB);
     }
 

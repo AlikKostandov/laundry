@@ -42,6 +42,25 @@
             </tr>
             </tbody>
         </table>
+        <form th:action="@{'admin/user/add'}" method="post" >
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="passNumber"  placeholder="Pass Number">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="name"  placeholder="Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control"  name="surname" required placeholder="Surname">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control"  name="room" required placeholder="Student's room">
+                </div>
+                <div style="width: 235px">
+                    <input type="submit" class="btn btn-primary" value="Принять">
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

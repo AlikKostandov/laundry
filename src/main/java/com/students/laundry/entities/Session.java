@@ -21,6 +21,9 @@ public class Session {
     @Column(name = "status")
     private Boolean status;
 
+    @Column(name = "floor")
+    private int floor;
+
 //    @ManyToOne
 //    @JoinColumn(name = "user_pass_number")
 //    private User user;

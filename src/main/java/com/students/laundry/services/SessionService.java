@@ -5,6 +5,9 @@ import com.students.laundry.entities.Session;
 import com.students.laundry.exceptions.ResourceNotFoundException;
 import com.students.laundry.repositories.SessionRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +25,13 @@ public class SessionService {
     public Session findById(Long id) {
         return sessionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("session not found!"));
     }
+
+    public Page<Session> getAllWindows(Specification<Session> spec, int page, int size) {
+        return sessionRepository.findAll(spec, PageRequest.of(page, size));
+    }
+
+
+
 
 
 //    String curHour = "16:00";

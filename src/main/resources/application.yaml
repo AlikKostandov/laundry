@@ -4,6 +4,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=laundry
     username: postgres
     password: hater
+  main:
+    allow-circular-references: true
 
   jpa:
     show-sql: true
