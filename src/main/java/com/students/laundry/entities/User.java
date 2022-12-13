@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -31,7 +33,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-//    private Set<Session> sessions = new HashSet<Session>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Session> sessions = new HashSet<Session>();
+
+
 
 }

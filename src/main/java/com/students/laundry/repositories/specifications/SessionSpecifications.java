@@ -13,4 +13,8 @@ public class SessionSpecifications {
     public static Specification<Session> sessionStatusLike(boolean status) {
         return (Specification<Session>) (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.equal(root.get("status"), status);
     }
+
+    public static Specification<Session> passNumberLike(String passNumber) {
+        return (Specification<Session>) (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.like(root.get("user").get("passNumber"), String.format("%%%s%%", passNumber)); // where b.title like %titlePart%
+    }
 }

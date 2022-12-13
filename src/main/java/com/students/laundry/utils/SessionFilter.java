@@ -32,5 +32,13 @@ public class SessionFilter {
 
 
         }
+
+        if (params.containsKey("passNumber")) {
+            ArrayList<String> filters = (ArrayList<String>) params.get("passNumber");
+            String number = filters.get(0);
+            if(!number.isEmpty() && number != null) {
+                spec = spec.and(SessionSpecifications.passNumberLike(number));
+            }
+        }
     }
 }

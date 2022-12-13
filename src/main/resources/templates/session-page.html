@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Текущее Окно:</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Данные об окне</h1>
+  <p th:text="${ses.sessionStartTime}"></p>
+  <a th:if="${ses.getStatus().equals(false)}"  class="btn btn-success"  th:href= "@{'occupy/' + ${ses.sessionId}}"><p class="bt-color">Занять</p></a>
+  <a  th:if="${ses.getStatus().equals(true)}"  class="btn btn-danger"  th:href= "@{'cancel/' + ${ses.sessionId}}"><p class="bt-color">Освободить</p></a>
+
+</div>
+
+
+</body>
+</html>

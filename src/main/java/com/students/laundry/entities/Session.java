@@ -1,6 +1,7 @@
 package com.students.laundry.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,7 +25,8 @@ public class Session {
     @Column(name = "floor")
     private int floor;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_pass_number")
-//    private User user;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_pass_number", nullable = true)
+    private User user;
 }

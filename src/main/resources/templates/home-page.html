@@ -35,19 +35,23 @@
 <!--                    <option class="list-group-item category" value="9">9 этаж</option>-->
 <!--                </select>-->
 
-                <a href="/home" class="list-group-item category">Все</a>
-                <a href="/home?floor=16" class="list-group-item category">16 этаж</a>
-                <a href="/home?floor=15" class="list-group-item category">15 этаж</a>
-                <a href="/home?floor=14" class="list-group-item category">14 этаж</a>
-                <a href="/home?floor=13" class="list-group-item category">13 этаж</a>
-                <a href="/home?floor=12" class="list-group-item category">12 этаж</a>
-                <a href="/home?floor=11" class="list-group-item category">11 этаж</a>
-                <a href="/home?floor=10" class="list-group-item category">10 этаж</a>
-                <a href="/home?floor=9" class="list-group-item category">9 этаж</a>
+
+                <a href="/home?floor=16" class="list-group-item category disabled">16 этаж</a>
+                <a href="/home?floor=15" class="list-group-item category ">15 этаж</a>
+                <a href="/home?floor=14" class="list-group-item category disabled">14 этаж</a>
+                <a href="/home?floor=13" class="list-group-item category disabled">13 этаж</a>
+                <a href="/home?floor=12" class="list-group-item category disabled">12 этаж</a>
+                <a href="/home?floor=11" class="list-group-item category disabled">11 этаж</a>
+                <a href="/home?floor=10" class="list-group-item category disabled">10 этаж</a>
+                <a href="/home?floor=9" class="list-group-item category disabled">9 этаж</a>
 
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="status" name="status" value="false">
                     <label class="form-check-label" for="status">Только свободные</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="passNumber" name="passNumber" value="100032294">
+                    <label class="form-check-label" for="status">Мои</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Применить</button>
             </form>
@@ -56,7 +60,7 @@
             <div class="row">
                 <div th:each="s: ${sessions}" class="col-sm-4">
                     <div class="product">
-                        <a th:href="@{'/' + ${s.sessionId}}" class="open_pop_up">
+                        <a th:href="@{'/home/' + ${s.sessionId}}" >
                             <div class="block">
                                 <img src="image/window.png" class="window">
                                 <div class="time" th:text="${s.sessionStartTime.replaceAll(':', ' ')}"></div>

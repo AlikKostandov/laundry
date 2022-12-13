@@ -13,7 +13,7 @@
       <div class="cont">
         <div class="header">
           <div class="header-logo">
-            <h2><span class="color-blue">Laundry</span></h2>
+            <img src="/image/13.png" style="transform: scale(0.5);">
           </div>
         </div>
       </div>
@@ -31,7 +31,8 @@
             <form th:action="@{/registry}" th:object="${user}" method="post" class="reg-form">
               <input class="reg-input" type="text" th:field="*{passNumber}" placeholder="Введите № пропуска" />
               <input class="reg-input" type="password" th:field="*{password}" placeholder="Введите пароль" />
-              <input class="reg-button" type="submit"  value="Зарегистрироваться" />
+              <input class="reg-button" style="margin-top: 10px; margin-bottom: 10px" type="submit"  value="Зарегистрироваться" />
+              <a href="/login" class="btn btn-secondary">Я уже зарегистрирован</a>
             </form>
           </div>
         </div>
