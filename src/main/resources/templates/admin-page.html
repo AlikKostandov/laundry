@@ -38,6 +38,7 @@
                 <td th:text="${u.room}"></td>
                 <td>
                     <a class="btn btn-secondary" th:href="@{'admin/edit/' + ${u.passNumber}}">Изменить уровень доступа</a>
+                    <a class="btn btn-danger" th:href="@{'admin/remove/' + ${u.passNumber}}">Отстранить</a>
                 </td>
             </tr>
             </tbody>

@@ -63,7 +63,7 @@
                         <a th:href="@{'/home/' + ${s.sessionId}}" >
                             <div class="block">
                                 <img src="image/window.png" class="window">
-                                <div class="time" th:text="${s.sessionStartTime.replaceAll(':', ' ')}"></div>
+                                <div class="time" th:text="${s.sessionStartTime.toString().substring(11,16).replaceAll(':',' ')}"></div>
                             </div>
                         </a>
                     </div>

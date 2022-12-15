@@ -3,8 +3,10 @@ package com.students.laundry.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -17,7 +19,8 @@ public class Session {
     private Long sessionId;
 
     @Column(name = " session_start_time")
-    private String sessionStartTime;
+    @DateTimeFormat(pattern = "HH:MM")
+    private Date sessionStartTime;
 
     @Column(name = "status")
     private Boolean status;
@@ -29,4 +32,5 @@ public class Session {
     @ManyToOne
     @JoinColumn(name = "user_pass_number", nullable = true)
     private User user;
+
 }
